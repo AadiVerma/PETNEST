@@ -2,23 +2,36 @@
 import Image from "next/image";
 import { MdSunny } from "react-icons/md";
 import { IoIosMoon } from "react-icons/io";
-import { SetStateAction, Dispatch } from "react";
-export default function Header({ setIsDarkMode, isDarkMode }: { setIsDarkMode: Dispatch<SetStateAction<boolean>>, isDarkMode: boolean }) {
+import {useState } from "react"; 
+import { useRouter} from 'next/navigation';
+import {useDispatch} from 'react-redux';
+import {changeTheme} from '../../redux/Slice/ThemeSlice';
+export default function Header() {
+    const router = useRouter();
+    const  dispatch=useDispatch();
+    const [isDarkMode,setIsDarkMode]=useState<boolean>(false);
     const toggleDarkMode = () => {
         setIsDarkMode(!isDarkMode);
+        dispatch(changeTheme(!isDarkMode));
     };
     return (
-        <div className="p-2 w-[100%] tracking-widest">
+        <div className={`p-2 w-[100%] tracking-widest ${isDarkMode?"dark bg-[#212121]":"bg-white"}`}>
             <div className="flex items-center justify-between p-4">
-                <div className="flex gap-2 cursor-pointer items-center">
+                <div className="flex gap-2 cursor-pointer items-center" onClick={()=>{
+                    router.push("/")
+                }}>
                     <Image src="/Paws.png" height={10} width={20} alt="Paws Image" className="h-[30px] w-[30px]" />
                     <h1 className="text-2xl font-bold text-[#F6855B] dark:text-white">PETNEST</h1>
                 </div>
                 <div className="dark:text-white text-[#F6855B] flex-col justify-center items-center">
                     <div className="flex gap-4 text-[#F6855B] dark:text-white items-center">
-                        <h1 className="cursor-pointer hover:underline underline-offset-4 font-semibold hover:text-[#F6855B]">HOME</h1>
+                        <h1 className="cursor-pointer hover:underline underline-offset-4 font-semibold hover:text-[#F6855B]" onClick={()=>{
+                            router.push("/")
+                        }}>HOME</h1>
                         <h1 className="cursor-pointer hover:underline underline-offset-4 font-semibold hover:text-[#F6855B]">DONATE</h1>
-                        <h1 className="cursor-pointer hover:underline underline-offset-4 font-semibold hover:text-[#F6855B]">ADOPT</h1>
+                        <h1 className="cursor-pointer hover:underline underline-offset-4 font-semibold hover:text-[#F6855B]"  onClick={()=>{
+                            router.push("/Adoption")
+                        }}>ADOPT</h1>
                         <h1 className="cursor-pointer hover:underline underline-offset-4 font-semibold hover:text-[#F6855B]">ABOUT US</h1>
                         <h1 className="cursor-pointer hover:underline underline-offset-4 font-semibold hover:text-[#F6855B]">CONTACT US</h1>
                     </div>

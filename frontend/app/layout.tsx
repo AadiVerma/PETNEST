@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Fredoka } from "next/font/google";
 import "./globals.css";
-
+import Header from "./components/Header";
+import { Provider } from "../redux/store/store";
+import {store} from "../redux/store/store";
 const amaticSc = Fredoka({
   subsets: ["latin"],
   weight: ["400", "700"],
@@ -24,9 +26,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${amaticSc.variable} ${amaticSc.style} ${amaticSc.className} antialiased `}
+        className={`${amaticSc.variable} ${amaticSc.style} ${amaticSc.className} antialiased p-0 m-0 flex flex-col h-screen`}
       >
-        {children}
+        <Provider store={store}>
+          <Header />
+          <main className="flex-1">
+          {children}
+        </main>
+        </Provider>
       </body>
     </html>
   );

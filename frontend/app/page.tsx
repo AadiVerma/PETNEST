@@ -1,15 +1,11 @@
 "use client"
-import Header from "./components/Header";
-import { useState } from 'react';
 import LandingFirstPage from "./components/LandingFirstPage";
+import { useSelector } from "../redux/store/store";
 export default function Home() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const state=useSelector();
   return (
-    <div className={`${isDarkMode ? "dark bg-[#212121]" : "light bg-white"} min-h-screen h-fit`}>
-      <div className="flex dark:bg-[#212121] bg-white">
-        <Header setIsDarkMode={setIsDarkMode} isDarkMode={isDarkMode} />
-      </div>
-      <div className=" dark:bg-[#212121] bg-white">
+    <div className={`${state ? "dark bg-[#212121]" : "light bg-white"} flex flex-col h-full`}>
+      <div className={`${state ? "dark bg-[#212121]" : "light bg-white"} bg-white p-0 m-0`}>
         <LandingFirstPage />
       </div>
     </div>
