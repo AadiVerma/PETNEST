@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image";
 
-export default function Petcard({name,breed,birth,sex,image}:{name:string,breed:string,birth:string,sex:string,image:string}) {
+export default function Petcard({name,breed,birth,sex,image,type}:{name:string,breed:string,birth:string,sex:string,image:string,type:string}) {
     return (
         <div className="relative border-2 border-[#fbf8c5] rounded-md">
             <div className="bg-[#FFFDD0] h-[280px] w-[250px] p-10 rounded ">
@@ -15,7 +15,7 @@ export default function Petcard({name,breed,birth,sex,image}:{name:string,breed:
                 </div>
                 <div className="flex justify-between mt-1">
                     <h1 className="text-sm">{sex}</h1>
-                    <button className="p-1 pl-4 pr-4 rounded bg-[#F6855B] border-2 border-[#F6855B] hover:bg-transparent hover:text-[#F6855B] text-white text-sm font-medium">Adopt</button>
+                    <button className="p-1 pl-4 pr-4 rounded bg-[#F6855B] border-2 border-[#F6855B] hover:bg-transparent hover:text-[#F6855B] text-white text-sm font-medium">{type}</button>
                 </div>
             </div>
         </div>

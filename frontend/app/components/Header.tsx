@@ -23,17 +23,20 @@ export default function Header() {
                     <Image src="/Paws.png" height={10} width={20} alt="Paws Image" className="h-[30px] w-[30px]" />
                     <h1 className="text-2xl font-bold text-[#F6855B] dark:text-white">PETNEST</h1>
                 </div>
-                <div className="dark:text-white text-[#F6855B] flex-col justify-center items-center">
+                <div className="dark:text-white text-[#F6855B] flex-col justify-center items-center ml-20">
                     <div className="flex gap-4 text-[#F6855B] dark:text-white items-center">
                         <h1 className="cursor-pointer hover:underline underline-offset-4 font-semibold hover:text-[#F6855B]" onClick={()=>{
                             router.push("/")
                         }}>HOME</h1>
-                        <h1 className="cursor-pointer hover:underline underline-offset-4 font-semibold hover:text-[#F6855B]">DONATE</h1>
+                        <h1 className="cursor-pointer hover:underline underline-offset-4 font-semibold hover:text-[#F6855B]" onClick={()=>{
+                    router.push("/Donation")
+                }}>DONATE</h1>
                         <h1 className="cursor-pointer hover:underline underline-offset-4 font-semibold hover:text-[#F6855B]"  onClick={()=>{
                             router.push("/Adoption")
                         }}>ADOPT</h1>
-                        <h1 className="cursor-pointer hover:underline underline-offset-4 font-semibold hover:text-[#F6855B]">ABOUT US</h1>
-                        <h1 className="cursor-pointer hover:underline underline-offset-4 font-semibold hover:text-[#F6855B]">CONTACT US</h1>
+                        <h1 className="cursor-pointer hover:underline underline-offset-4 font-semibold hover:text-[#F6855B]" onClick={()=>{
+                            router.push("/AboutUs")
+                        }}>ABOUT US</h1>
                     </div>
                 </div>
                 <div className="flex gap-4 items-center">

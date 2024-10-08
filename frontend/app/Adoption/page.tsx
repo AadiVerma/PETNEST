@@ -8,14 +8,14 @@ export default function DonationCard() {
             <h1 className="text-3xl font-bold  text-[#F6855B] flex justify-center">Meet The Animals</h1>
             <h2 className="flex justify-center mt-2 text-4xl font-semibold text-[#414141] dark:text-white"> Waiting for Adoption</h2>
             <div className="flex justify-center place-items-center gap-10 flex-wrap mt-10">
-                <Petcard name={"Tommy"} breed={"German Shefard"} sex={"Male"} birth={"2022"} image={"/Dog.png"}/>
-                <Petcard name={"Shadow"} breed={"Abyssinian"} sex={"Female"} birth={"2023"} image={"/Cat3.png"}/>
-                <Petcard name={"Jack"} breed={"German Shefard"} sex={"Male"} birth={"2022"} image={"/Dog1.png"}/>
-                <Petcard name={"Jack"} breed={"German Shefard"} sex={"Male"} birth={"2022"} image={"/Dog.png"}/>
-                <Petcard name={"Jack"} breed={"German Shefard"} sex={"Male"} birth={"2022"} image={"/Dog.png"}/>
-                <Petcard name={"Jack"} breed={"German Shefard"} sex={"Male"} birth={"2022"} image={"/Dog.png"}/>
-                <Petcard name={"Jack"} breed={"German Shefard"} sex={"Male"} birth={"2022"} image={"/Dog.png"}/>
-                <Petcard name={"Jack"} breed={"German Shefard"} sex={"Male"} birth={"2022"} image={"/Dog.png"}/>
+                <Petcard name={"Tommy"} breed={"German Shefard"} sex={"Male"} birth={"2022"} image={"/Dog.png"} type={"Adopt"}/>
+                <Petcard name={"Shadow"} breed={"Abyssinian"} sex={"Female"} birth={"2023"} image={"/Cat3.png"} type={"Adopt"}/>
+                <Petcard name={"Jack"} breed={"German Shefard"} sex={"Male"} birth={"2022"} image={"/Cat.png"} type={"Adopt"}/>
+                <Petcard name={"Jack"} breed={"German Shefard"} sex={"Male"} birth={"2022"} image={"/Dog.png"} type={"Adopt"}/>
+                <Petcard name={"Jack"} breed={"German Shefard"} sex={"Male"} birth={"2022"} image={"/Cat3.png"} type={"Adopt"}/>
+                <Petcard name={"Jack"} breed={"German Shefard"} sex={"Male"} birth={"2022"} image={"/Dog.png"} type={"Adopt"}/>
+                <Petcard name={"Jack"} breed={"German Shefard"} sex={"Male"} birth={"2022"} image={"/Dog.png"} type={"Adopt"}/>
+                <Petcard name={"Jack"} breed={"German Shefard"} sex={"Male"} birth={"2022"} image={"/Cat.png"} type={"Adopt"}/>
             </div>
         </div>
     )
