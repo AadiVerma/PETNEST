@@ -11,14 +11,14 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
-  @Get()
-  findAll() {
-    return this.userService.findAll();
+  
+  @Get(':name/:password')
+  findOne(@Param('name') name: string,@Param('password') password:string) {
+    return this.userService.findOne({name,password}); 
   }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.userService.findOne(id); 
+  @Get('all')
+  findAll() {
+    return this.userService.findAll();  
   }
 
 }

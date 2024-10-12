@@ -1,14 +1,18 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import mongoose from 'mongoose';
-
+import 'dotenv/config'
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-
-  await mongoose.connect("mongodb+srv://adityakaplish11:jesyo2jguGWJkuvI@cluster0.ky6jg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0").catch((error) => {
+  const app = await NestFactory.create(AppModule,{cors:true});
+  app.enableCors({
+    origin: 'http://localhost:3000',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  });
+  await mongoose.connect(process.env.BACKEND_URL).catch((error) => {
     console.log("Failed to connect");
   })
   console.log("Connected successfully");
-  await app.listen(3000);
+  await app.listen(3001);
 }
 bootstrap();

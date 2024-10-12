@@ -3,9 +3,9 @@ import { CreateUserDto } from './dto/create-user.dto';
 import usermodel from 'database/models/usermodel';
 @Injectable()
 export class UserService {
-  create(createUserDto: CreateUserDto) {
+  async create(createUserDto: CreateUserDto) {
     try {
-      const user = usermodel.create({
+      const user = await usermodel.create({
         name: createUserDto.name,
         email: createUserDto.email,
         password: createUserDto.password,
@@ -18,23 +18,30 @@ export class UserService {
     }
   }
 
-  findAll() {
+  async findAll() {
     try {
-      const user = usermodel.find();
+      const user = await usermodel.find();
+      console.log("Users");
       return user;
     } catch (error) {
       return "Error Occured"
     }
   }
 
-  findOne(id: string) {
+  async findOne({ name, password }: { name: string, password: string }) {
     try {
-      const user = usermodel.findById(id);
+      const user = await usermodel.findOne({
+        $and: [
+          { name: name },
+          { password: password }
+        ]
+      });
       return user;
     } catch (error) {
-      return "Error Occured"
+      return "Error Occurred";
     }
   }
+
 
 
 }
