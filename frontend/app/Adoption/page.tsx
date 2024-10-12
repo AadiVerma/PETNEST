@@ -2,7 +2,7 @@
 import Petcard from "../components/PetCard";
 import { useSelector } from "../../redux/store/store";
 export default function DonationCard() {
-    const state=useSelector();
+    const state=useSelector((state)=>state.Theme);
     return (
         <div className={`${state? "dark bg-[#212121]":"bg-white"} min-h-screen h-fit tracking-wider p-10`}>
             <h1 className="text-3xl font-bold  text-[#F6855B] flex justify-center">Meet The Animals</h1>

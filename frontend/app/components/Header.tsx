@@ -4,11 +4,13 @@ import { MdSunny } from "react-icons/md";
 import { IoIosMoon } from "react-icons/io";
 import {useState } from "react"; 
 import { useRouter} from 'next/navigation';
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from '../../redux/store/store';
 import {changeTheme} from '../../redux/Slice/ThemeSlice';
+import {removeauth} from '../../redux/Slice/AuthSlice'
 export default function Header() {
     const router = useRouter();
     const  dispatch=useDispatch();
+    const selector=useSelector((state)=>state.Auth);
     const [isDarkMode,setIsDarkMode]=useState<boolean>(false);
     const toggleDarkMode = () => {
         setIsDarkMode(!isDarkMode);
@@ -51,8 +53,18 @@ export default function Header() {
                             <IoIosMoon className={`${isDarkMode ? "text-[#F6855B]" : "text-gray-500"} text-2xl`} />
                         </div>
                     </div>
-                    <button className="pl-4 pr-4 p-2 rounded border-2 border-[#F6855B] hover:bg-[#F6855B] hover:text-white text-[#F6855B]">Log In</button>
-                    <button className="pl-4 pr-4 p-2 bg-[#F6855B] rounded hover:bg-transparent border-2 border-[#F6855B] text-white hover:text-[#F6855B]">Sign Up</button>
+                    {selector.isAuthenticated==false?<><button className="pl-4 pr-4 p-2 rounded border-2 border-[#F6855B] hover:bg-[#F6855B] hover:text-white text-[#F6855B]" onClick={()=>{
+                            router.push("/login")
+                        }}>Log In</button>
+                    <button className="pl-4 pr-4 p-2 bg-[#F6855B] rounded hover:bg-transparent border-2 border-[#F6855B] text-white hover:text-[#F6855B]" onClick={()=>{
+                            router.push("/signup")
+                        }}>Sign Up</button>
+                        </>:<><button className="pl-4 pr-4 p-2 bg-[#F6855B] rounded hover:bg-transparent border-2 border-[#F6855B] text-white hover:text-[#F6855B]" onClick={()=>{
+                            localStorage.removeItem("token");
+                            dispatch(removeauth());
+                            router.push("/login")
+                        }}>Log Out</button></>
+                        }
                 </div>
 
             </div>

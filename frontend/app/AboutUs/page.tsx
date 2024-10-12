@@ -7,7 +7,7 @@ import { BsTwitterX } from "react-icons/bs";
 import { FaGithubSquare } from "react-icons/fa";
 import Image from "next/image";
 export default function AboutUS() {
-    const state = useSelector();
+    const state = useSelector((state)=>state.Theme);
     return (
         <div className={`${state ? "dark bg-[#212121]" : "bg-white"} min-h-screen h-fit p-6 tracking-wider`}>
             <h1 className="flex justify-center font-bold text-[#F6855B] text-4xl">About Us</h1>
